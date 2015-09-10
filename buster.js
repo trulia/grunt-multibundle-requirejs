@@ -24,7 +24,7 @@ module.exports =
     'buster-istanbul':
     {
       outputDirectory: 'coverage',
-      format: ['text', 'text-summary', 'html']
+      format: ['text', 'text-summary', 'lcov']
     }
   }
 };

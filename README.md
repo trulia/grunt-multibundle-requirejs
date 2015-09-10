@@ -1,5 +1,7 @@
 # grunt-multibundle-requirejs
 
+[![Join the chat at https://gitter.im/trulia/grunt-multibundle-requirejs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/trulia/grunt-multibundle-requirejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > Grunt task for handling multi-bundle requirejs setup
 
 ## Getting Started

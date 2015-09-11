@@ -4,7 +4,7 @@
 
 [![Build Status](https://img.shields.io/travis/trulia/grunt-multibundle-requirejs.svg)](https://travis-ci.org/trulia/grunt-multibundle-requirejs)
 [![Coverage Status](https://img.shields.io/coveralls/trulia/grunt-multibundle-requirejs.svg)](https://coveralls.io/github/trulia/grunt-multibundle-requirejs?branch=master)
-[![Join the chat at https://gitter.im/trulia/grunt-multibundle-requirejs](https://thefiletree.com/gh-badges/gitter.svg)](https://gitter.im/trulia/grunt-multibundle-requirejs)
+[![Join the chat at https://gitter.im/trulia/grunt-multibundle-requirejs](http://form-data.github.io/images/gitterbadge.svg)](https://gitter.im/trulia/grunt-multibundle-requirejs)
 
 ## Getting Started
 This plugin requires Grunt `^0.4.5`

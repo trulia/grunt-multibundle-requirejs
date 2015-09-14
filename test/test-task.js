@@ -15,7 +15,7 @@ buster.testCase('task',
 
   'registers task with provided grunt instance': function()
   {
-    assert.calledOnceWith(this.grunt.registerTask, 'multibundle-requirejs');
+    assert.calledOnceWith(this.grunt.registerTask, 'multibundle_requirejs');
     assert.isFunction(this.grunt.registerTask.getCall(0).args[2]);
   }
 });

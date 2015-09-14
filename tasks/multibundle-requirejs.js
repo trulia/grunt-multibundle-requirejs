@@ -25,7 +25,7 @@ var path      = require('path')
 module.exports = task = function(grunt)
 {
   grunt.registerTask(
-    'multibundle-requirejs',
+    'multibundle_requirejs',
     'Grunt task for handling multi-bundle requirejs setup',
     partial(task._multibundleRequirejs, grunt)
   );

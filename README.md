@@ -28,7 +28,7 @@ In your project's Gruntfile, add a section named `multibundle_requirejs` to the 
 
 ```js
 grunt.initConfig({
-  multibundle_requirejs: {
+  'multibundle-requirejs': {
     options: {
       _config: {
         // task "global" options

@@ -1,39 +1,34 @@
 {
   "name": "grunt-multibundle-requirejs",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Grunt task for handling multi-bundle requirejs setup",
   "main": "tasks/multibundle-requirejs.js",
   "scripts": {
-    "test": "buster-test --reporter specification",
-    "testsuite": "buster-test --reporter brief --fail-on-focus",
-    "lint": "eslint -c .eslintrc {*,tasks/*,test/*}.js",
-    "docs": "jsdoc2md --src tasks/multibundle-requirejs.js --private --name-format code --param-list-format list --sort-by scope access category kind order --group-by scope category --separators true > API.md"
+    "test": "grunt test",
+    "lint": "grunt lint"
   },
   "pre-commit": [
     "lint",
-    "testsuite",
-    "docs"
+    "test"
   ],
   "repository": {
     "type": "git",
     "url": "git@github.com:trulia/grunt-multibundle-requirejs.git"
   },
   "dependencies": {
-    "deeply": "^0.1.0",
-    "glob": "^5.0.14",
-    "lodash.partial": "^3.1.1",
-    "lodash.uniq": "^3.2.2",
-    "lodash.without": "^3.2.1",
-    "requirejs": "^2.1.20"
+    "multibundle": "^1.0.1"
   },
   "devDependencies": {
-    "buster": "^0.7.18",
-    "buster-istanbul": "^0.1.15",
-    "coveralls": "^2.11.4",
-    "eslint": "^0.24.1",
-    "jsdoc-to-markdown": "^1.1.1",
-    "lodash.filter": "^3.1.1",
-    "pre-commit": "^1.1.1"
+    "async": "^1.4.2",
+    "backbone": "^1.2.3",
+    "eslint": "^1.6.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-file-compare": "^1.0.5",
+    "lodash": "^3.10.1",
+    "pre-commit": "^1.1.1",
+    "rendr": "^1.1.1",
+    "requirejs": "^2.1.20"
   },
   "keywords": [
     "gruntplugin",

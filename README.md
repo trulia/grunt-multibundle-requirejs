@@ -3,7 +3,6 @@
 > Grunt task for handling multi-bundle requirejs setup
 
 [![Build Status](https://img.shields.io/travis/trulia/grunt-multibundle-requirejs.svg)](https://travis-ci.org/trulia/grunt-multibundle-requirejs)
-[![Coverage Status](https://img.shields.io/coveralls/trulia/grunt-multibundle-requirejs.svg)](https://coveralls.io/github/trulia/grunt-multibundle-requirejs?branch=master)
 [![Join the chat at https://gitter.im/trulia/grunt-multibundle-requirejs](http://form-data.github.io/images/gitterbadge.svg)](https://gitter.im/trulia/grunt-multibundle-requirejs)
 
 ## Getting Started
@@ -74,11 +73,11 @@ Default value: `undefined`
 
 Output folder for the bundles.
 
-#### _config.sharedBundle
-Type: `String`
+#### _config.sharedBundles
+Type: `Array`
 Default value: `undefined`
 
-Defines name of the shared bundle, all the modules included in the shared bundle,
+Defines list of the shared bundles (order matters), all the modules included in the shared bundles,
 will be excluded from other modules.
 
 #### _config.hashFiles
@@ -92,9 +91,10 @@ Could be a function (`hashFiles(output, componentOptions)`), then it will be res
 Type: `WriteStream|Function`
 Default value: `undefined`
 
-Will be called after each bundle creation with `component`, `filename`, `includedModules`,
+Will be called after each bundle creation with respective `buildObject`,
 to allow modules-bundle mapping. Will be called one extra time with no arguments
-after all the bundles processed. In case of WriteStream `write` and `end` methods will be called respectively. For example of the mapping write stream, see `multibundle-requirejs-mapping-write`.
+after all the bundles processed. In case of WriteStream, bundler's ReadStream will piped into it.
+For example of the mapping write stream, see `multibundle-requirejs-mapping-write`.
 
 #### _config.baseUrl
 Type: `String`

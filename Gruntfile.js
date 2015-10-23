@@ -19,7 +19,7 @@ module.exports = function(grunt)
 
     'clean':
     {
-      tests: ['test/tmp/*.js']
+      tests: ['test/tmp']
     },
 
     'file_compare':

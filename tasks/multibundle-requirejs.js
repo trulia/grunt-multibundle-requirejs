@@ -6,7 +6,9 @@
  * Licensed under the MIT license.
  */
 
-var multibundle = require('multibundle');
+var path        = require('path')
+  , multibundle = require('multibundle')
+  ;
 
 // Public API
 module.exports = function(grunt)
@@ -25,7 +27,10 @@ module.exports = function(grunt)
       // keep in options components only
       delete options['_config'];
 
-      // optimize
+      // make sure destination dir exists
+      grunt.file.mkdir(path.join(config.baseUrl, config.destination));
+
+      // build (+ optimize)
       bundler = multibundle(config, options);
 
       // allow for `handleMapping` to be a writable stream

@@ -22,6 +22,7 @@ module.exports = function(grunt)
         , options = this.options()
         , config  = options['_config']
         , bundler
+        , mapper
         ;
 
       // keep in options components only
@@ -33,16 +34,25 @@ module.exports = function(grunt)
       // build (+ optimize)
       bundler = multibundle(config, options);
 
-      // allow for `handleMapping` to be a writable stream
-      // or a simple function
+      // should be a function that returns
+      // mapper instance (receiving function or writable stream)
+      // Note: it needs to be wrapper into a function
+      // to prevent grunt messing up with the object's state
       if (typeof config.handleMapping == 'function')
       {
-        bundler.on('data', config.handleMapping);
-        bundler.on('end', config.handleMapping);
-      }
-      else if (config.handleMapping)
-      {
-        bundler.pipe(config.handleMapping);
+        // grunt instance being passed to allow
+        // for more flexible configuration in the options
+        mapper = config.handleMapping(options, grunt);
+
+        if (typeof mapper == 'function')
+        {
+          bundler.on('data', mapper);
+          bundler.on('end', mapper);
+        }
+        else if (mapper)
+        {
+          bundler.pipe(mapper);
+        }
       }
 
       bundler.on('end', function()

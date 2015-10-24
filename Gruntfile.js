@@ -1,6 +1,21 @@
 var assert = require('assert');
 var expectedBundles = 4;
 
+function testBuild(options, buildObject)
+{
+  // it will be invoked for each bundle with respective buildObject
+  if (buildObject)
+  {
+    assert(buildObject.name in options);
+    expectedBundles--;
+  }
+  // and without arguments after all bundles have been processed
+  else
+  {
+    assert.strictEqual(0, expectedBundles);
+  }
+}
+
 module.exports = function(grunt)
 {
   var options;
@@ -43,21 +58,15 @@ module.exports = function(grunt)
           sharedBundles: ['optional', 'common'],
           // or custom function `hashFiles(output, componentOptions)`
           hashFiles: true,
-          // will be called one extra time with no arguments after all the bundles processed
-          // also accepts writable streams in object mode, (e.g. `multibundle-requirejs-mapping-write`)
-          handleMapping: function(buildObject)
+          // should be a function that returns
+          // mapper instance (receiving function or writable stream)
+          // Note: it needs to be wrapper into a function
+          // to prevent grunt messing up with the object's state
+          handleMapping: function(options, grunt)
           {
-            // it will be invoked for each bundle with respective buildObject
-            if (buildObject)
-            {
-              assert(buildObject.name in options['multibundle-requirejs'].options);
-              expectedBundles--;
-            }
-            // and without arguments after all bundles have been processed
-            else
-            {
-              assert.strictEqual(0, expectedBundles);
-            }
+            // will be called one extra time with no arguments after all the bundles processed
+            // also accepts writable streams in object mode, (e.g. `multibundle-mapper`)
+            return testBuild.bind(null, options);
           },
           // pass options to r.js
           baseUrl: '.',

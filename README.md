@@ -88,13 +88,16 @@ If enabled adds md5 hash (over bundle's content) to the bundle's filename.
 Could be a function (`hashFiles(output, componentOptions)`), then it will be responsible for producing content hash.
 
 #### _config.handleMapping
-Type: `WriteStream|Function`
-Default value: `undefined`
+Type: `Function`
 
-Will be called after each bundle creation with respective `buildObject`,
+Accepts two arguments `options` - options object passed to the grunt task,
+and `grunt` - grunt instance itself.
+
+Expected to return mapper instance, either `WriteStream` or a function,
+that will be called after each bundle creation with respective `buildObject`,
 to allow modules-bundle mapping. Will be called one extra time with no arguments
 after all the bundles processed. In case of WriteStream, bundler's ReadStream will piped into it.
-For example of the mapping write stream, see `multibundle-requirejs-mapping-write`.
+For example of the mapping write stream, see [multibundle-mapper](https://www.npmjs.com/package/multibundle-mapper).
 
 #### _config.baseUrl
 Type: `String`

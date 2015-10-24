@@ -40,25 +40,30 @@ module.exports = function(grunt)
       // to prevent grunt messing up with the object's state
       if (typeof config.handleMapping == 'function')
       {
-        // grunt instance being passed to allow
+        // options and grunt instance being passed to allow
         // for more flexible configuration in the options
-        mapper = config.handleMapping(options, grunt);
+        // last passed callback to invoke when mapping finished
+        mapper = config.handleMapping.call(this, options, grunt, done);
 
         if (typeof mapper == 'function')
         {
           bundler.on('data', mapper);
           bundler.on('end', mapper);
         }
-        else if (mapper)
+        else
         {
           bundler.pipe(mapper);
         }
       }
-
-      bundler.on('end', function()
+      // no mapping handler finish
+      // after all files built
+      else
       {
-        done(true);
-      });
+        bundler.on('end', function()
+        {
+          done(true);
+        });
+      }
 
       bundler.on('error', function(error)
       {

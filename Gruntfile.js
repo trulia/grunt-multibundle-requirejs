@@ -1,19 +1,24 @@
 var assert = require('assert');
 var expectedBundles = 4;
 
-function testBuild(options, buildObject)
+function testBuild(options, cb, buildObject)
 {
-  // it will be invoked for each bundle with respective buildObject
-  if (buildObject)
+  // pretending writing to a file
+  setTimeout(function()
   {
-    assert(buildObject.name in options);
-    expectedBundles--;
-  }
-  // and without arguments after all bundles have been processed
-  else
-  {
-    assert.strictEqual(0, expectedBundles);
-  }
+    // it will be invoked for each bundle with respective buildObject
+    if (buildObject)
+    {
+      assert(buildObject.name in options);
+      expectedBundles--;
+    }
+    // and without arguments after all bundles have been processed
+    else
+    {
+      assert.strictEqual(0, expectedBundles);
+      cb();
+    }
+  }, 10);
 }
 
 module.exports = function(grunt)
@@ -62,11 +67,16 @@ module.exports = function(grunt)
           // mapper instance (receiving function or writable stream)
           // Note: it needs to be wrapper into a function
           // to prevent grunt messing up with the object's state
-          handleMapping: function(options, grunt)
+          handleMapping: function(options, grunt, done)
           {
             // will be called one extra time with no arguments after all the bundles processed
             // also accepts writable streams in object mode, (e.g. `multibundle-mapper`)
-            return testBuild.bind(null, options);
+            return testBuild.bind(null, options, function()
+            {
+              console.log('Finished all bundles.');
+              // grunt style callback
+              done(true);
+            });
           },
           // pass options to r.js
           baseUrl: '.',

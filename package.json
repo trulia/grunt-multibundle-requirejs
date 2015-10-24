@@ -1,6 +1,6 @@
 {
   "name": "grunt-multibundle-requirejs",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Grunt task for handling multi-bundle requirejs setup",
   "main": "tasks/multibundle-requirejs.js",
   "scripts": {
@@ -24,6 +24,7 @@
     "eslint": "^1.6.0",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.6.0",
+    "grunt-eslint": "^17.3.1",
     "grunt-file-compare": "^1.0.5",
     "lodash": "^3.10.1",
     "pre-commit": "^1.1.1",

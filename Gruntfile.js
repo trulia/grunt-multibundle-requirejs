@@ -44,7 +44,7 @@ module.exports = function(grunt)
 
     'file_compare':
     {
-      check_common  : ['test/fixtures/expected/common.d8cbdeb1970daacdc70c01c3306e31c7.js', 'test/tmp/common.d8cbdeb1970daacdc70c01c3306e31c7.js'],
+      check_common  : ['test/fixtures/expected/common.924b4c700b6502966ee2cedda37aa853.js', 'test/tmp/common.924b4c700b6502966ee2cedda37aa853.js'],
       check_maps    : ['test/fixtures/expected/maps.b371bd03bd498257ded2aae300de5d13.js', 'test/tmp/maps.b371bd03bd498257ded2aae300de5d13.js'],
       check_optional: ['test/fixtures/expected/optional.f242c6ec7db101d485e624c441061180.js', 'test/tmp/optional.f242c6ec7db101d485e624c441061180.js'],
       check_user    : ['test/fixtures/expected/user.2a25559b93ae406914f97d940e98aa3d.js', 'test/tmp/user.2a25559b93ae406914f97d940e98aa3d.js']

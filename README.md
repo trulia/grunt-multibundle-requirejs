@@ -3,6 +3,7 @@
 > Grunt task for handling multi-bundle requirejs setup
 
 [![Build Status](https://img.shields.io/travis/trulia/grunt-multibundle-requirejs.svg)](https://travis-ci.org/trulia/grunt-multibundle-requirejs)
+[![bitHound Overall Score](https://www.bithound.io/github/trulia/grunt-multibundle-requirejs/badges/score.svg)](https://www.bithound.io/github/trulia/grunt-multibundle-requirejs)
 [![Join the chat at https://gitter.im/trulia/grunt-multibundle-requirejs](http://form-data.github.io/images/gitterbadge.svg)](https://gitter.im/trulia/grunt-multibundle-requirejs)
 
 ## Getting Started
@@ -47,7 +48,7 @@ grunt.initConfig({
 
 ### Options
 
-Example file with all the options could be found here [example.js](example.js).
+Example file with all the options could be found here [Gruntfile.js](Gruntfile.js).
 
 #### options._config
 Type: `Object`
@@ -149,10 +150,6 @@ Example: `{'backbone': {src: 'node_modules/backbone/backbone.js', deps: ['jquery
 
 Adds named module from specified source to the parent bundle, with explicitly set dependencies.
 and creates shim to make it AMD-compatible by exporting global object. Also adds require call to execute module in-place.
-
-## API
-
-API documentation is auto-generated into [API.md](API.md).
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code before committing.

@@ -1,6 +1,15 @@
 var assert = require('assert');
 var expectedBundles = 4;
 
+/**
+ * Tests provided build object
+ * against list of expected bundles
+ *
+ * @param   {object} options - config object for the task
+ * @param   {function} cb - callback function
+ * @param   {object} buildObject - generated options object for r.js
+ * @returns {void}
+ */
 function testBuild(options, cb, buildObject)
 {
   // pretending writing to a file
@@ -23,10 +32,8 @@ function testBuild(options, cb, buildObject)
 
 module.exports = function(grunt)
 {
-  var options;
-
   // Project configuration.
-  grunt.initConfig(options = {
+  grunt.initConfig({
 
     'eslint':
     {
@@ -34,7 +41,7 @@ module.exports = function(grunt)
       {
         configFile: '.eslintrc'
       },
-      target: ['tasks/multibundle-requirejs.js']
+      target: ['tasks/multibundle-requirejs.js', 'Gruntfile.js']
     },
 
     'clean':
@@ -44,7 +51,7 @@ module.exports = function(grunt)
 
     'file_compare':
     {
-      check_common  : ['test/fixtures/expected/common.924b4c700b6502966ee2cedda37aa853.js', 'test/tmp/common.924b4c700b6502966ee2cedda37aa853.js'],
+      check_common  : ['test/fixtures/expected/common.8c4a46cef59ebdd05e6cc94e41d7e574.js', 'test/tmp/common.8c4a46cef59ebdd05e6cc94e41d7e574.js'],
       check_maps    : ['test/fixtures/expected/maps.b371bd03bd498257ded2aae300de5d13.js', 'test/tmp/maps.b371bd03bd498257ded2aae300de5d13.js'],
       check_optional: ['test/fixtures/expected/optional.f242c6ec7db101d485e624c441061180.js', 'test/tmp/optional.f242c6ec7db101d485e624c441061180.js'],
       check_user    : ['test/fixtures/expected/user.2a25559b93ae406914f97d940e98aa3d.js', 'test/tmp/user.2a25559b93ae406914f97d940e98aa3d.js']
@@ -67,7 +74,7 @@ module.exports = function(grunt)
           // mapper instance (receiving function or writable stream)
           // Note: it needs to be wrapper into a function
           // to prevent grunt messing up with the object's state
-          handleMapping: function(options, grunt, done)
+          handleMapping: function(options, gruntInstance, done)
           {
             // will be called one extra time with no arguments after all the bundles processed
             // also accepts writable streams in object mode, (e.g. `multibundle-mapper`)
@@ -111,6 +118,10 @@ module.exports = function(grunt)
           // multiple entry points module
           {'rendr/shared' : 'node_modules/rendr/shared/app.js'},
           {'rendr/client' : 'node_modules/rendr/client/router.js'},
+
+          // module that requires files directly
+          // it needs `nodeIdCompat:true`
+          {'deeply'       : 'node_modules/deeply/index.js'},
 
           // modules needed to be shimmed
           {'async'        : {src: 'node_modules/async/lib/async.js', exports: 'async'}},

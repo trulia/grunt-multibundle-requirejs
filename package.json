@@ -19,7 +19,7 @@
     "multibundle": "^2.0.0"
   },
   "devDependencies": {
-    "async": "1.5.0",
+    "async": "^1.5.2",
     "backbone": "1.2.3",
     "deeply": "^1.0.0",
     "eslint": "^1.10.3",
@@ -27,7 +27,7 @@
     "grunt-contrib-clean": "^0.7.0",
     "grunt-eslint": "^17.3.1",
     "grunt-file-compare": "^1.0.5",
-    "lodash": "3.10.1",
+    "lodash": "^4.2.0",
     "pre-commit": "^1.1.2",
     "rendr": "1.1.3",
     "requirejs": "^2.1.22"

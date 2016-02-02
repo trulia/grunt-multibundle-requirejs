@@ -1,6 +1,6 @@
 {
   "name": "grunt-multibundle-requirejs",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "Grunt task for handling multi-bundle requirejs setup",
   "main": "tasks/multibundle-requirejs.js",
   "scripts": {
@@ -16,20 +16,21 @@
     "url": "git@github.com:trulia/grunt-multibundle-requirejs.git"
   },
   "dependencies": {
-    "multibundle": "^1.2.0"
+    "multibundle": "^2.0.0"
   },
   "devDependencies": {
     "async": "1.5.0",
     "backbone": "1.2.3",
-    "eslint": "^1.8.0",
+    "deeply": "^1.0.0",
+    "eslint": "^1.10.3",
     "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-clean": "^0.7.0",
     "grunt-eslint": "^17.3.1",
     "grunt-file-compare": "^1.0.5",
     "lodash": "3.10.1",
     "pre-commit": "^1.1.2",
     "rendr": "1.1.3",
-    "requirejs": "2.1.20"
+    "requirejs": "^2.1.22"
   },
   "keywords": [
     "gruntplugin",

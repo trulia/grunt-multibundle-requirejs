@@ -4,7 +4,7 @@
     "**/test/fixtures/**"
   ],
   "test": [
-    "**/test.js",
+    "**/Gruntfile.js",
     "**/test/**"
   ]
 }
